@@ -83,7 +83,7 @@ authUISettings.materialTheme = MaterialTheme.GREEN
 ```
 Next step is to load the `AuthUIFragment` in your Activity.
 
-```java
+```kotlin
 // declare instance of AuthUIFragment
 private var authUIFragment: AuthUIFragment? = null
 // load fragment with your own settings or default settings
@@ -141,7 +141,7 @@ This is the simplest way to configure the library to enable Custom login mode al
 
 Login Types(EMAIL,MOBILE and EMAIL_OR_MOBILE). Default login type is EMAIL.
 
-```java
+```kotlin
 authUISettings.loginType = LoginType.EMAIL;
 **OR**
 authUISettings.loginType = LoginType.MOBILE;
@@ -151,25 +151,25 @@ authUISettings.loginType = LoginType.EMAIL_OR_MOBILE;
 
 To hide social platforms use below code
 
-```java
+```kotlin
 authUISettings.isSocialPlatformRequired = false;
 ```
 
 To hide App logo
 
-```java
+```kotlin
 authUISettings.isAppLogoRequired = false;
 ```
 
 In case your app only requires login
 
-```java
+```kotlin
 authUISettings.isSignupRequired = false;
 ```
 
 In case your app only requires one of the below
 
-```java
+```kotlin
 authUISettings.isFacebookLoginRequired = false;
 **OR**
 authUISettings.isGoogleLoginRequired = false;
@@ -177,20 +177,20 @@ authUISettings.isGoogleLoginRequired = false;
 
 In case you want to handle the form validation error message
 
-```java
+```kotlin
 authUISettings.isHandleFormError = true;
 // once it is set to true, implement your logic in 'onFormValidationError(String message)' method of AuthUIFragmentListener interface
 ```
 
 In case your app doesn't require forgot password
 
-```java
+```kotlin
 authUISettings.isForgotPasswordRequired = true;
 ```
 
 Set your default view
 
-```java
+```kotlin
 authUISettings.defaultView = AuthUIView.LOGIN;
 **OR**
 authUISettings.defaultView = AuthUIView.SIGNUP;
@@ -198,7 +198,7 @@ authUISettings.defaultView = AuthUIView.SIGNUP;
 
 Supported Themes (Default Theme is WHITE)
 
-```java
+```kotlin
 authUISettings.materialTheme = MaterialTheme.DEFAULT;
 **OR**
 authUISettings.materialTheme = MaterialTheme.WHITE;
