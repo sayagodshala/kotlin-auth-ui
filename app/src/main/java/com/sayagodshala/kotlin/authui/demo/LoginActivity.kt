@@ -24,16 +24,16 @@ class LoginActivity : AppCompatActivity(), AuthUIFragmentListener {
         authUISettings.isForgotPasswordRequired = true
         authUISettings.appLogo = R.mipmap.my_logo
         authUISettings.loginTitle = getString(R.string.login_title)
-        authUISettings.signupTitle = (getString(R.string.signup_title))
-        authUISettings.forgotPasswordTitle = (getString(R.string.forgot_password_title))
-        authUISettings.loginTerms = (getString(R.string.loggin_terms))
-        authUISettings.signupTerms = (getString(R.string.signup_terms))
-        authUISettings.facebookLoginTitle = (getString(R.string.login_with_facebook))
-        authUISettings.facebookSignupTitle = (getString(R.string.signup_with_facebook))
-        authUISettings.googleLoginTitle = (getString(R.string.login_with_google))
-        authUISettings.googleSignupTitle = (getString(R.string.signup_with_google))
-        authUISettings.loginToggleTitle = (getString(R.string.have_an_account))
-        authUISettings.signupToggleTitle = (getString(R.string.dont_have_account))
+        authUISettings.signupTitle = getString(R.string.signup_title)
+        authUISettings.forgotPasswordTitle = getString(R.string.forgot_password_title)
+        authUISettings.loginTerms = getString(R.string.loggin_terms)
+        authUISettings.signupTerms = getString(R.string.signup_terms)
+        authUISettings.facebookLoginTitle = getString(R.string.login_with_facebook)
+        authUISettings.facebookSignupTitle = getString(R.string.signup_with_facebook)
+        authUISettings.googleLoginTitle = getString(R.string.login_with_google)
+        authUISettings.googleSignupTitle = getString(R.string.signup_with_google)
+        authUISettings.loginToggleTitle = getString(R.string.have_an_account)
+        authUISettings.signupToggleTitle = getString(R.string.dont_have_account)
         authUISettings.defaultView = AuthUIView.LOGIN
         authUISettings.materialTheme = MaterialTheme.GREEN
 
