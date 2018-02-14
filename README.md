@@ -97,7 +97,7 @@ AuthUIFragment.loadFragment(this, authUIFragment!!, R.id.frame);
 
 Final step is to implement `AuthUIFragmentListener` interface in your target activity where `AuthUIFragment` is loaded with corresponding methods.
 
-```java
+```kotlin
 class LoginActivity : AppCompatActivity(), AuthUIFragmentListener {
 
     override fun onLoginClicked(user: AuthUIUser) {
