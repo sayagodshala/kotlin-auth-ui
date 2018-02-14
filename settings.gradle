@@ -1,1 +1,1 @@
-include ':app', ':kotlin-auth-ui'
+include ':app', ':auth-ui'
