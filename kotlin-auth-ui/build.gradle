@@ -73,7 +73,7 @@ allprojects {
 }
 
 
-apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/bintray.gradle'
+//apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/install.gradle'
+//apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/bintray.gradle'
 
 apply plugin: 'kotlin-android-extensions'

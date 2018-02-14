@@ -1,0 +1,40 @@
+language: android
+
+sudo: false
+
+jdk: oraclejdk8
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-27.0.2
+    - android-27
+    - extra-android-m2repository
+    - extra-google-m2repository
+
+
+notifications:
+  email: false
+
+env:
+    - GRADLE_OPTS="-Xmx2048M -XX:MaxPermSize=2048m"
+
+script:
+  # By default Travis-ci executes './gradlew build connectedCheck' if no 'script:' section found.
+  - ./gradlew build
+#deploy:
+#  provider: bintray
+#  file: "Path to a descriptor file, containing information for the Bintray upload"
+#  user: "Bintray user"
+#  key: "Bintray API key"
+#  passphrase: "godshala@1Se9"
+#  dry-run: "Optional. If true, skips sending requests to Bintray. Useful for testing your configuration"
+
+cache:
+  directories:
+   - $HOME/.gradle
+
