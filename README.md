@@ -57,7 +57,7 @@ Next step is to configure the `AuthUISettings`.
 
 Example:
 
-```java
+```kotlin
 val authUISettings = AuthUISettings()
 authUISettings.isSocialPlatformRequired = true
 authUISettings.isAppLogoRequired = true
