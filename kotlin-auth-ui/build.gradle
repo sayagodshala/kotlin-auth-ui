@@ -61,10 +61,19 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/bintray.gradle'
 repositories {
     mavenCentral()
 }
+
+// to ignore javadoc for bintray
+allprojects {
+    tasks.withType(Javadoc) {
+        excludes = ['**/*.kt'] // < ---- Exclude all kotlin files from javadoc file.
+    }
+}
+
+
+apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/install.gradle'
+apply from: 'https://raw.githubusercontent.com/sayagodshala/common-files/master/bintray.gradle'
 
 apply plugin: 'kotlin-android-extensions'

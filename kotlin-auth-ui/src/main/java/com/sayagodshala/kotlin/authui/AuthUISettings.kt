@@ -2,6 +2,7 @@ package com.sayagodshala.kotlin.authui
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.sayagodshala.kotlin.authui.R
 
 class AuthUISettings : Parcelable {
 

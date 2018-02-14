@@ -1,5 +1,7 @@
 package com.sayagodshala.kotlin.authui
 
+import com.sayagodshala.kotlin.authui.R
+
 enum class MaterialColor private constructor(val textPrimaryColor: Int, val textSecondaryColor: Int, val regular: Int, val light: Int, val dark: Int) {
     RED(R.color.white, R.color.dark_grey, R.color.mat_red, R.color.mat_red_light_dark, R.color.mat_red_dark),
     PINK(R.color.white, R.color.dark_grey, R.color.mat_pink, R.color.mat_pink_light_dark, R.color.mat_pink_dark),

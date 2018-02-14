@@ -1,9 +1,9 @@
 package com.sayagodshala.kotlin.authui.demo
 
-import android.bluetooth.BluetoothAssignedNumbers.GOOGLE
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.sayagodshala.authui.*
 import com.sayagodshala.kotlin.authui.*
 
 
