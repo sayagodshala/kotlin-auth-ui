@@ -1,6 +1,11 @@
 # kotlin-auth-ui
 Android Kotlin App Auth Template(Login, Signup and Forgot Password) UI Edit
 
+[![Download](https://api.bintray.com/packages/sayagodshala/maven/auth-ui/images/download.svg) ](https://bintray.com/sayagodshala/maven/auth-ui/_latestVersion)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![TravisCI](https://travis-ci.org/sayagodshala/auth-ui.svg?branch=master)](https://travis-ci.org/sayagodshala/auth-ui)
+[![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
+
 # What's in the box
 
 - The login, signup and forgot password UI Template for your app
