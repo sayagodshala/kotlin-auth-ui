@@ -1,5 +1,5 @@
-# auth-ui
-Android App Auth(Login, Signup and Forgot Password) UI
+# kotlin-auth-ui
+Android Kotlin App Auth Template(Login, Signup and Forgot Password) UI Edit
 
 # What's in the box
 
@@ -35,7 +35,7 @@ CYAN | TEAL | WHITE/DEFAULT
 The **Auth UI** library is pushed to jcenter, so you need to add the following dependency to your app's `build.gradle`.
 
 ```gradle
-compile 'com.sayagodshala:auth-ui:1.0'
+compile 'com.sayagodshala:kotlin-auth-ui:1.0'
 ```
 
 ### As a module
@@ -58,92 +58,77 @@ Next step is to configure the `AuthUISettings`.
 Example:
 
 ```java
-AuthUISettings authUISettings = new AuthUISettings();
-authUISettings.setSocialPlatformRequired(true);
-authUISettings.setAppLogoRequired(true);
-authUISettings.setTermsRequired(true);
-authUISettings.setSignupRequired(true);
-authUISettings.setFacebookLoginRequired(true);
-authUISettings.setGoogleLoginRequired(true);
-authUISettings.setForgotPasswordRequired(true);
-authUISettings.setAppLogo(R.mipmap.my_logo);
-authUISettings.setLoginTitle("Login using your registered email and password.");
-authUISettings.setSignupTitle("You are just few steps a head. Register and start a head.");
-authUISettings.setForgotPasswordTitle("Put in your email id for password reset link");
-authUISettings.setLoginTerms("By Logging in I agree to the <b>Terms of Use</b>");
-authUISettings.setSignupTerms("By Signing up I agree to the <b>Terms of Use</b>");
-authUISettings.setFacebookLoginTitle("Login with Facebook");
-authUISettings.setFacebookSignupTitle("Signup with Facebook");
-authUISettings.setGoogleLoginTitle("Login with Google");
-authUISettings.setGoogleSignupTitle("Signup with Google");
-authUISettings.setLoginToggleTitle("Have an account? <b>LOGIN</b>");
-authUISettings.setSignupToggleTitle("Don\'t have an account? <b>SIGN UP</b>");
-authUISettings.setDefaultView(AuthUIView.LOGIN);
-authUISettings.setMaterialTheme(MaterialTheme.CYAN);
+val authUISettings = AuthUISettings()
+authUISettings.isSocialPlatformRequired = true
+authUISettings.isAppLogoRequired = true
+authUISettings.isTermsRequired = true
+authUISettings.isSignupRequired = true
+authUISettings.isFacebookLoginRequired = true
+authUISettings.isGoogleLoginRequired = true
+authUISettings.isForgotPasswordRequired = true
+authUISettings.appLogo = R.mipmap.my_logo
+authUISettings.loginTitle = getString(R.string.login_title)
+authUISettings.signupTitle = (getString(R.string.signup_title))
+authUISettings.forgotPasswordTitle = (getString(R.string.forgot_password_title))
+authUISettings.loginTerms = (getString(R.string.loggin_terms))
+authUISettings.signupTerms = (getString(R.string.signup_terms))
+authUISettings.facebookLoginTitle = (getString(R.string.login_with_facebook))
+authUISettings.facebookSignupTitle = (getString(R.string.signup_with_facebook))
+authUISettings.googleLoginTitle = (getString(R.string.login_with_google))
+authUISettings.googleSignupTitle = (getString(R.string.signup_with_google))
+authUISettings.loginToggleTitle = (getString(R.string.have_an_account))
+authUISettings.signupToggleTitle = (getString(R.string.dont_have_account))
+authUISettings.defaultView = AuthUIView.LOGIN
+authUISettings.materialTheme = MaterialTheme.GREEN
 ```
 Next step is to load the `AuthUIFragment` in your Activity.
 
 ```java
 // declare instance of AuthUIFragment
-AuthUIFragment authUIFragment;
+private var authUIFragment: AuthUIFragment? = null
 // load fragment with your own settings or default settings
 authUIFragment = AuthUIFragment.newInstance(authUISettings);
 **OR**
-authUIFragment = AuthUIFragment.newInstanceWithDefaultSettings();
+authUIFragment = AuthUIFragment.newInstanceWithDefaultSettings()
 
 // load authUIFragment into the frame layout
-AuthUIFragment.loadFragment(this, authUIFragment, R.id.frame);
-
-
-
+AuthUIFragment.loadFragment(this, authUIFragment!!, R.id.frame);
 ```
 
-Final step is to implement `AuthUIFragment.AuthUIFragmentListener` interface in your target activity where `AuthUIFragment` is loaded with corresponding methods.
+Final step is to implement `AuthUIFragmentListener` interface in your target activity where `AuthUIFragment` is loaded with corresponding methods.
 
 ```java
-public class LoginActivity extends AppCompatActivity implements AuthUIFragmentListener {
+class LoginActivity : AppCompatActivity(), AuthUIFragmentListener {
 
-    @Override
-    public void onLoginClicked(AuthUIUser user) {
-        switch (user.getLoginType()) {
-            case EMAIL:
-                Log.d("onLoginClicked", "email : " + user.getEmail() + ", password : " + user.getPassword());
-                break;
-            case MOBILE:
-                Log.d("onLoginClicked", "mobile : " + user.getMobile() + ", password : " + user.getPassword());
-                break;
-            case EMAIL_OR_MOBILE:
-                Log.d("onLoginClicked", "email/mobile : " + user.getEmailOrMobile() + ", password : " + user.getPassword());
-                break;
+    override fun onLoginClicked(user: AuthUIUser) {
+        when (user.loginType) {
+            LoginType.EMAIL -> Log.d("onLoginClicked", "email : " + user.email + ", password : " + user.password)
+            LoginType.MOBILE -> Log.d("onLoginClicked", "mobile : " + user.mobile + ", password : " + user.password)
+            LoginType.EMAIL_OR_MOBILE -> Log.d("onLoginClicked", "email/mobile : " + user.emailOrMobile + ", password : " + user.password)
         }
     }
 
-    @Override
-    public void onSignupClicked(AuthUIUser user) {
-        Log.d("onSignupClicked", "name : " + user.getName() + ", email : " + user.getEmail() + ", mobile : " + user.getMobile() + ", password : " + user.getPassword());
+    override fun onSignupClicked(user: AuthUIUser) {
+        Log.d("onSignupClicked", "name : " + user.name + ", email : " + user.email + ", mobile : " + user.mobile + ", password : " + user.password)
     }
 
-    @Override
-    public void onForgotPasswordClicked(AuthUIUser user) {
-        Log.d("onForgotPasswordClicked", "email : " + user.getEmail());
-        // on successful response of 'forgot password api' call below method to show login view again
-        authUIFragment.recallLoginView();
+    override fun onForgotPasswordClicked(user: AuthUIUser) {
+        Log.d("onForgotPasswordClicked", "email : " + user.email)
+        authUIFragment!!.recallLoginView()
     }
 
-    @Override
-    public void onSocialAccountClicked(SocialAccount socialAccount, boolean isRegistration) {
-        Log.d("onSocialAccountClicked", "socialAccount : " + socialAccount.name() + ", isRegistration : " + isRegistration);
-        switch (socialAccount) {
-            case FACEBOOK:
-                break;
-            case GOOGLE:
-                break;
+    override fun onSocialAccountClicked(socialAccount: SocialAccount, isRegistration: Boolean) {
+        Log.d("onSocialAccountClicked", "socialAccount : " + socialAccount.name + ", isRegistration : " + isRegistration)
+        when (socialAccount) {
+            SocialAccount.FACEBOOK -> {
+            }
+            SocialAccount.GOOGLE -> {
+            }
         }
     }
 
-    @Override
-    public void onFormValidationError(String error) {
-        Log.d("onFormValidationError", "error : " + error);
+    override fun onFormValidationError(error: String) {
+        Log.d("onFormValidationError", "error : " + error)
     }
 
 }
@@ -157,68 +142,68 @@ This is the simplest way to configure the library to enable Custom login mode al
 Login Types(EMAIL,MOBILE and EMAIL_OR_MOBILE). Default login type is EMAIL.
 
 ```java
-authUISettings.setLoginType(LoginType.EMAIL);
+authUISettings.loginType = LoginType.EMAIL;
 **OR**
-authUISettings.setLoginType(LoginType.MOBILE);
+authUISettings.loginType = LoginType.MOBILE;
 **OR**
-authUISettings.setLoginType(LoginType.EMAIL_OR_MOBILE);
+authUISettings.loginType = LoginType.EMAIL_OR_MOBILE;
 ```
 
 To hide social platforms use below code
 
 ```java
-authUISettings.setSocialPlatformRequired(false);
+authUISettings.isSocialPlatformRequired = false;
 ```
 
 To hide App logo
 
 ```java
-authUISettings.setAppLogoRequired(false);
+authUISettings.isAppLogoRequired = false;
 ```
 
 In case your app only requires login
 
 ```java
-authUISettings.setSignupRequired(false);
+authUISettings.isSignupRequired = false;
 ```
 
 In case your app only requires one of the below
 
 ```java
-authUISettings.setFacebookLoginRequired(false);
+authUISettings.isFacebookLoginRequired = false;
 **OR**
-authUISettings.setGoogleLoginRequired(false);
+authUISettings.isGoogleLoginRequired = false;
 ```
 
 In case you want to handle the form validation error message
 
 ```java
-authUISettings.setHandleFormError(true);
+authUISettings.isHandleFormError = true;
 // once it is set to true, implement your logic in 'onFormValidationError(String message)' method of AuthUIFragmentListener interface
 ```
 
 In case your app doesn't require forgot password
 
 ```java
-authUISettings.setForgotPasswordRequired(true);
+authUISettings.isForgotPasswordRequired = true;
 ```
 
 Set your default view
 
 ```java
-authUISettings.setDefaultView(AuthUIView.LOGIN);
+authUISettings.defaultView = AuthUIView.LOGIN;
 **OR**
-authUISettings.setDefaultView(AuthUIView.SIGNUP);
+authUISettings.defaultView = AuthUIView.SIGNUP;
 ```
 
 Supported Themes (Default Theme is WHITE)
 
 ```java
-authUISettings.setMaterialTheme(MaterialTheme.DEFAULT);
+authUISettings.materialTheme = MaterialTheme.DEFAULT;
 **OR**
-authUISettings.setMaterialTheme(MaterialTheme.WHITE);
+authUISettings.materialTheme = MaterialTheme.WHITE;
 **OR**
-authUISettings.setMaterialTheme(MaterialTheme.RED);
+authUISettings.materialTheme = MaterialTheme.RED;
 ```
 
 and many more like PINK,PURPLE,DEEP_PURPLE,INDIGO,BLUE,LIGHT_BLUE,CYAN,TEAL,BLUE_GREY,YELLOW,AMBER,BROWN,GREEN and GREY.
