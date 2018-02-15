@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity(), AuthUIFragmentListener {
         authUISettings.isGoogleLoginRequired = true
         authUISettings.isForgotPasswordRequired = true
         authUISettings.appLogo = R.mipmap.my_logo
+        authUISettings.loginType = LoginType.EMAIL
         authUISettings.loginTitle = getString(R.string.login_title)
         authUISettings.signupTitle = getString(R.string.signup_title)
         authUISettings.forgotPasswordTitle = getString(R.string.forgot_password_title)
