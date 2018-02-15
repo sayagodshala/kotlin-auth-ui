@@ -3,8 +3,8 @@ Android Kotlin App Auth Template(Login, Signup and Forgot Password) UI Edit
 
 [![Download](https://api.bintray.com/packages/sayagodshala/maven/kotlin-auth-ui/images/download.svg) ](https://bintray.com/sayagodshala/maven/kotlin-auth-ui/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![TravisCI](https://travis-ci.org/sayagodshala/kotlin-auth-ui.svg?branch=master)](https://travis-ci.org/sayagodshala/kotlin-auth-ui)
 [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
-<!--[![TravisCI](https://travis-ci.org/sayagodshala/kotlin-auth-ui.svg?branch=master)](https://travis-ci.org/sayagodshala/kotlin-auth-ui)-->
 
 # What's in the box
 
@@ -13,11 +13,6 @@ Android Kotlin App Auth Template(Login, Signup and Forgot Password) UI Edit
 - Play with element visibility
 - Setup material theme like Teal, Cyan, Indigo and many more.
 - Hide and Show social logins.
-
-<!--[![Download](https://api.bintray.com/packages/sayagodshala/maven/auth-ui/images/download.svg) ](https://bintray.com/sayagodshala/maven/auth-ui/_latestVersion)-->
-<!--[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)-->
-<!--[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ActionSheet%20for%20Android-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5607)-->
-<!--[![TravisCI](https://travis-ci.org/aromajoin/actionsheet-android.svg?branch=master)](https://travis-ci.org/aromajoin/actionsheet-android)-->
 
 <!--[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Smart%20Login-green.svg?style=true)](https://android-arsenal.com/details/1/3026)-->
 
